@@ -1,0 +1,31 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="chinook.jpa" transaction-type="JTA">
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>java:/comp/env/jdbc/ChinookDS</jta-data-source>
+
+        <class>org.gislers.chinook.entities.AlbumEntity</class>
+        <class>org.gislers.chinook.entities.ArtistEntity</class>
+        <class>org.gislers.chinook.entities.CustomerEntity</class>
+        <class>org.gislers.chinook.entities.EmployeeEntity</class>
+        <class>org.gislers.chinook.entities.GenreEntity</class>
+        <class>org.gislers.chinook.entities.InvoiceEntity</class>
+        <class>org.gislers.chinook.entities.InvoiceLineEntity</class>
+        <class>org.gislers.chinook.entities.MediaTypeEntity</class>
+        <class>org.gislers.chinook.entities.PlaylistEntity</class>
+        <class>org.gislers.chinook.entities.PlaylistTrackEntity</class>
+        <class>org.gislers.chinook.entities.TrackEntity</class>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.naming_strategy" value="org.hibernate.cfg.EJB3NamingStrategy" />
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.format_sql" value="false" />
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
