@@ -9,6 +9,7 @@
         <artifactId>chinook-java-spring</artifactId>
         <groupId>org.gislers.chinook</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>chinook-entities</artifactId>

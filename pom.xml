@@ -17,6 +17,7 @@
         <module>chinook-database</module>
         <module>chinook-persistence</module>
         <module>chinook-entities</module>
+        <module>chinook-service</module>
     </modules>
 
     <scm>
@@ -70,8 +71,21 @@
 
             <dependency>
                 <groupId>org.gislers.chinook</groupId>
+                <artifactId>chinook-persistence</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.gislers.chinook</groupId>
                 <artifactId>chinook-entities</artifactId>
                 <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.gislers.chinook</groupId>
+                <artifactId>chinook-test</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>test</scope>
             </dependency>
 
             <dependency>
@@ -176,21 +190,29 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${springframework.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-mxj</artifactId>
                 <version>5.0.12</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>simple-jndi</groupId>
                 <artifactId>simple-jndi</artifactId>
                 <version>0.11.4.1</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.4</version>
             </dependency>
 
         </dependencies>

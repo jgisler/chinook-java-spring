@@ -1,4 +1,4 @@
-package org.gislers.chinook.persistence.test.support;
+package org.gislers.test.support;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;

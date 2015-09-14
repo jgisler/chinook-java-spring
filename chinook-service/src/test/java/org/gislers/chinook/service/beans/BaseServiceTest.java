@@ -1,6 +1,7 @@
-package org.gislers.chinook.persistence.dao.impl;
+package org.gislers.chinook.service.beans;
 
 import org.gislers.chinook.persistence.config.PersistenceConfig;
+import org.gislers.chinook.service.config.ServiceConfig;
 import org.gislers.test.support.JndiDatasourceHelper;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
@@ -14,17 +15,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by:   jgisle
- * Created date: 9/11/15
+ * Created date: 9/14/15
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=PersistenceConfig.class)
+@ContextConfiguration(classes={
+        PersistenceConfig.class,
+        ServiceConfig.class
+})
 @TestExecutionListeners(listeners = {
         DependencyInjectionTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
 })
 @Transactional
-public abstract class BaseDaoImplTest {
+public abstract class BaseServiceTest {
 
     @BeforeClass
     public static void beforeClass() {
