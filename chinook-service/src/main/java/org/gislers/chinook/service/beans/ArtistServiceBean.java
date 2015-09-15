@@ -8,6 +8,9 @@ import org.gislers.chinook.service.exceptions.ChinookServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by jim
  * Created on 9/13/15.
@@ -28,5 +31,17 @@ public class ArtistServiceBean extends AbstractServiceBean implements ArtistServ
         Artist artist = buildArtist(artistEntity);
         artist.getAlbums().addAll( buildAlbumList(artistEntity) );
         return artist;
+    }
+
+    @Override
+    public List<Artist> getAllArtists() {
+        List<ArtistEntity> artistEntities = artistDao.findAll();
+        List<Artist> artists = new ArrayList<>(artistEntities.size());
+        for( ArtistEntity artistEntity : artistEntities ) {
+            Artist artist = buildArtist( artistEntity );
+            artist.getAlbums().addAll( buildAlbumList(artistEntity) );
+            artists.add(artist);
+        }
+        return artists;
     }
 }

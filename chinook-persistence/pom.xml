@@ -99,11 +99,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.gislers.chinook</groupId>
-            <artifactId>chinook-test</artifactId>
+            <groupId>simple-jndi</groupId>
+            <artifactId>simple-jndi</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
 </project>

@@ -12,12 +12,14 @@
 
     <name>chinook-java-spring</name>
     <description>Java EE project using Test database Chinook</description>
+    <url>http://chinook.gislers.org/project</url>
 
     <modules>
         <module>chinook-database</module>
         <module>chinook-persistence</module>
         <module>chinook-entities</module>
         <module>chinook-service</module>
+        <module>chinook-rest-api</module>
     </modules>
 
     <scm>
@@ -25,6 +27,13 @@
         <developerConnection>scm:git:git@github.com:jgisler/chinook-java-spring.git</developerConnection>
         <url>https://github.com/jgisler/chinook-java-spring.git</url>
     </scm>
+
+    <distributionManagement>
+        <site>
+            <id>www.gislers.org</id>
+            <url>scp://www.gislers.org/www/docs/project/</url>
+        </site>
+    </distributionManagement>
 
     <properties>
         <java.version>1.8</java.version>
@@ -41,6 +50,12 @@
     </properties>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -53,6 +68,24 @@
                     </configuration>
                 </plugin>
                 <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cobertura-maven-plugin</artifactId>
+                    <version>2.6</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.ow2.asm</groupId>
+                            <artifactId>asm</artifactId>
+                            <version>5.0.3</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <formats>
+                            <format>html</format>
+                            <format>xml</format>
+                        </formats>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.2</version>
@@ -61,6 +94,21 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>sql-maven-plugin</artifactId>
                     <version>1.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.10</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.4</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>2.8.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -71,21 +119,20 @@
 
             <dependency>
                 <groupId>org.gislers.chinook</groupId>
-                <artifactId>chinook-persistence</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.gislers.chinook</groupId>
                 <artifactId>chinook-entities</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
                 <groupId>org.gislers.chinook</groupId>
-                <artifactId>chinook-test</artifactId>
+                <artifactId>chinook-persistence</artifactId>
                 <version>1.0-SNAPSHOT</version>
-                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.gislers.chinook</groupId>
+                <artifactId>chinook-service</artifactId>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
@@ -217,4 +264,15 @@
 
         </dependencies>
     </dependencyManagement>
+
+    <reporting>
+        <plugins>
+            <!-- Normally, we take off the dependency report, saves time. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.8.1</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>

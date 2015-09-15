@@ -5,6 +5,8 @@ import org.gislers.chinook.service.dto.Artist;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -24,5 +26,12 @@ public class ArtistServiceBeanTest extends BaseServiceTest {
         assertEquals(1, artist.getArtistId());
         assertEquals("AC/DC", artist.getArtistName());
         assertEquals(2, artist.getAlbums().size());
+    }
+
+    @Test
+    public void testGetAllArtist() throws Exception {
+        List<Artist> artists = artistService.getAllArtists();
+        assertNotNull(artists);
+        assertEquals( 275, artists.size() );
     }
 }

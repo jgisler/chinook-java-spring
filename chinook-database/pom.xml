@@ -34,7 +34,7 @@
                     <driver>com.mysql.jdbc.Driver</driver>
                     <url>jdbc:mysql://localhost:3306</url>
                     <username>root</username>
-                    <password>admin</password>
+                    <password>jrg8043</password>
                 </configuration>
                 <executions>
                     <execution>
