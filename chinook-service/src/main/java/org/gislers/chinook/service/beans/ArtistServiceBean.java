@@ -7,6 +7,7 @@ import org.gislers.chinook.service.dto.Artist;
 import org.gislers.chinook.service.exceptions.ChinookServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * Created on 9/13/15.
  */
 @Service
+@Transactional
 public class ArtistServiceBean extends AbstractServiceBean implements ArtistService {
 
     @Autowired

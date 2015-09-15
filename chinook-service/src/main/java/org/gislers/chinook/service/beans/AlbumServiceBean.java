@@ -7,12 +7,14 @@ import org.gislers.chinook.service.dto.Album;
 import org.gislers.chinook.service.exceptions.ChinookServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by jim
  * Created on 9/13/15.
  */
 @Service
+@Transactional
 public class AlbumServiceBean extends AbstractServiceBean implements AlbumService {
 
     @Autowired
