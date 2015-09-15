@@ -2,6 +2,7 @@ package org.gislers.chinook.persistence.dao.impl;
 
 import org.gislers.chinook.entities.AlbumEntity;
 import org.gislers.chinook.entities.ArtistEntity;
+import org.gislers.chinook.entities.TrackEntity;
 import org.gislers.chinook.persistence.dao.AlbumDao;
 import org.gislers.chinook.persistence.dao.ArtistDao;
 import org.junit.Test;
@@ -34,6 +35,10 @@ public class AlbumDaoImplTest extends BaseDaoImplTest {
         assertNotNull(artistEntity);
         assertEquals(1, artistEntity.getArtistId());
         assertEquals("AC/DC", artistEntity.getName());
+
+        List<TrackEntity> trackEntities = entity.getTrackEntities();
+        assertFalse( trackEntities.isEmpty() );
+        assertEquals( 10, trackEntities.size() );
     }
 
     @Test

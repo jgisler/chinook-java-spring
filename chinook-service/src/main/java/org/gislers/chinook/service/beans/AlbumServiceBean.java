@@ -29,6 +29,7 @@ public class AlbumServiceBean extends AbstractServiceBean implements AlbumServic
 
         Album album = buildAlbum( albumEntity );
         album.setArtist( buildArtist(albumEntity) );
+        album.setTracks( buildTrackList(albumEntity) );
         return album;
     }
 }

@@ -2,7 +2,6 @@ package org.gislers.chinook.rest.api.controller;
 
 import org.gislers.chinook.persistence.config.PersistenceConfig;
 import org.gislers.chinook.rest.api.config.RestApiConfig;
-import org.gislers.chinook.rest.api.config.WebMvcConfig;
 import org.gislers.chinook.service.config.ServiceConfig;
 import org.gislers.test.support.JndiDatasourceHelper;
 import org.junit.BeforeClass;
@@ -22,9 +21,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @ContextConfiguration(classes={
         PersistenceConfig.class,
         ServiceConfig.class,
-        RestApiConfig.class,
-        WebMvcConfig.class,
-
+        RestApiConfig.class
 })
 @TestExecutionListeners(listeners = {
         DependencyInjectionTestExecutionListener.class

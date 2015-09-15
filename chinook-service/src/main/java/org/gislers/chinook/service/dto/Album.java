@@ -1,5 +1,8 @@
 package org.gislers.chinook.service.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by jim
  * Created on 9/13/15.
@@ -9,6 +12,7 @@ public class Album {
     private long albumId;
     private String albumTitle;
     private Artist artist;
+    private List<Track> tracks = new ArrayList<>();
 
     public Album() {
     }
@@ -35,5 +39,17 @@ public class Album {
 
     public void setArtist(Artist artist) {
         this.artist = artist;
+    }
+
+    public List<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
+    }
+
+    public void addTrack( Track track ) {
+        this.tracks.add( track );
     }
 }

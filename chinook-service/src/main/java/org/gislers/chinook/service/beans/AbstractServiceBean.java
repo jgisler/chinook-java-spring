@@ -2,8 +2,10 @@ package org.gislers.chinook.service.beans;
 
 import org.gislers.chinook.entities.AlbumEntity;
 import org.gislers.chinook.entities.ArtistEntity;
+import org.gislers.chinook.entities.TrackEntity;
 import org.gislers.chinook.service.dto.Album;
 import org.gislers.chinook.service.dto.Artist;
+import org.gislers.chinook.service.dto.Track;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ abstract class AbstractServiceBean {
         Album album = new Album();
         album.setAlbumId(entity.getAlbumId());
         album.setAlbumTitle(entity.getTitle());
+        album.getTracks().addAll( buildTrackList(entity) );
         return album;
     }
 
@@ -39,5 +42,22 @@ abstract class AbstractServiceBean {
             albumList.add( buildAlbum(albumEntity) );
         }
         return albumList;
+    }
+
+    Track buildTrack( TrackEntity trackEntity ) {
+        Track track = new Track();
+        track.setTrackId( trackEntity.getTrackId() );
+        track.setTrackTitle( trackEntity.getName() );
+        track.setTrackDuration( trackEntity.getMilliseconds() );
+        return track;
+    }
+
+    List<Track> buildTrackList( AlbumEntity albumEntity ) {
+        List<TrackEntity> trackEntities = albumEntity.getTrackEntities();
+        List<Track> tracks = new ArrayList<>(trackEntities.size());
+        for( TrackEntity trackEntity : trackEntities ) {
+            tracks.add( buildTrack(trackEntity) );
+        }
+        return tracks;
     }
 }

@@ -22,7 +22,7 @@ public class AlbumEntity extends BaseEntity {
     @JoinColumn(name="artist_id")
     private ArtistEntity artistEntity;
 
-    @OneToMany(fetch= FetchType.LAZY, cascade= CascadeType.ALL, mappedBy="mediaTypeEntity")
+    @OneToMany(fetch= FetchType.LAZY, cascade= CascadeType.ALL, mappedBy="albumEntity")
     private List<TrackEntity> trackEntities;
 
     public AlbumEntity() {
@@ -50,5 +50,13 @@ public class AlbumEntity extends BaseEntity {
 
     public void setArtistEntity( ArtistEntity artistEntity ) {
         this.artistEntity = artistEntity;
+    }
+
+    public List<TrackEntity> getTrackEntities() {
+        return trackEntities;
+    }
+
+    public void setTrackEntities(List<TrackEntity> trackEntities) {
+        this.trackEntities = trackEntities;
     }
 }
