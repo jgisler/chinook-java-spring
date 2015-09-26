@@ -287,4 +287,60 @@
 
         </dependencies>
     </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>Wildfly Datasource Config</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>1.0.2.Final</version>
+                        <executions>
+
+                            <!-- Deploy the JDBC library -->
+                            <execution>
+                                <id>deploy-driver</id>
+                                <phase>install</phase>
+                                <configuration>
+                                    <groupId>mysql</groupId>
+                                    <artifactId>mysql-connector-java</artifactId>
+                                </configuration>
+                                <goals>
+                                    <goal>deploy-artifact</goal>
+                                </goals>
+                            </execution>
+
+                            <!-- Add a data source -->
+                            <execution>
+                                <id>add-datasource</id>
+                                <phase>install</phase>
+                                <configuration>
+                                    <address>subsystem=datasources,data-source=ChinookDS</address>
+                                    <resources>
+                                        <resource>
+                                            <properties>
+                                                <connection-url>jdbc:mysql://localhost:3306/chinook</connection-url>
+                                                <jndi-name>java:/comp/env/jdbc/ChinookDS</jndi-name>
+                                                <enabled>true</enabled>
+                                                <enable>true</enable>
+                                                <user-name>chinook_user</user-name>
+                                                <password>chinook_user</password>
+                                                <driver-name>mysql-connector-java-5.1.36.jar_com.mysql.jdbc.Driver_5_1</driver-name>
+                                                <use-ccm>false</use-ccm>
+                                            </properties>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                                <goals>
+                                    <goal>add-resource</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
